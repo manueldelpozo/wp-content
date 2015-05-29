@@ -10,3 +10,23 @@
 */
 
 /* Custom Styles need */
+#product-4 {
+	background-color: red;
+}
+#product-7 {
+	background-color: blue;
+}
+
+
+.format-popup1 {
+    background: black !important;
+    color: white;
+}
+.format-popup2 {
+    background: green !important;
+    color: white;
+}
+.format-popup3 {
+    background: white !important;
+    color: black;
+}
