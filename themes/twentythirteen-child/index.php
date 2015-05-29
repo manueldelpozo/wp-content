@@ -1,21 +1,28 @@
 <?php
 get_header();
-echo "hola";
 ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <?php
-            $args = array( 'post_type' => 'product' );
+        
+            $args = array( 'post_type' => 'product', 'posts_per_page' => 10 );
+            $loop = new WP_Query( $args );
 
+            while ( $loop->have_posts() ) : $loop->the_post();
         ?>
                 <div class="products">
-
                     <h3><?php the_title() ?></h3>
-                    <p><?php the_content() ?></p>
+                    <div class="entry-content">
+                        <?php the_content() ?>
+                    </div>
                 </div>
+        <?php endwhile; 
+        
+       
 
+        ?>
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?
 get_footer();
- ?>
+?>
