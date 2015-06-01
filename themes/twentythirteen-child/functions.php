@@ -13,21 +13,5 @@ function add_my_post_types_to_query( $query ) {
   return $query;
 }
 
-// Edit post formats
-//add_action( 'after_setup_theme', 'add_post_formats', 20 );
-//function add_post_formats() {
-    //add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video', 'popup1', 'popup2', 'popup3' ) );
-//}
-
-//add_action( 'after_setup_theme', 'childtheme_formats', 11 );
-//function childtheme_formats(){
-     //add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link' ) );
-//}
-
- 
-
-
-
-
 
 ?>
