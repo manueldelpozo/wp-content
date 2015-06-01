@@ -4,20 +4,6 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-            <nav>
-                <ul>
-            <?php
-                $args = array(
-                  'orderby' => 'name',
-                  'parent' => 0
-                  );
-                $categories = get_categories( $args );
-                foreach ( $categories as $category ) {
-                    echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
-                }
-            ?> 
-                </ul>
-            </nav>
             <div class="post">
             <?php
                 $args = array( 'post_type' => 'magazine' );
