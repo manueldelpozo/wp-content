@@ -18,15 +18,15 @@
 }
 
 
-.format-popup1 {
+.popup {
     background: black !important;
     color: white;
 }
-.format-popup2 {
+.popup2 {
     background: green !important;
     color: white;
 }
-.format-popup3 {
+.popup3 {
     background: white !important;
     color: black;
 }
