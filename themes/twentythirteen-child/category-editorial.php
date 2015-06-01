@@ -26,6 +26,9 @@ get_header(); ?>
                 while ( $loop->have_posts() ) : $loop->the_post();
                     $link = get_permalink( $id, $leavename );
                     $format = get_post_format( $post_id );
+                    $cat = get_the_category( $post_id );
+
+                    if( $cat[0]->name == 'editorial' ) :
             ?>
                 <a href="<?php echo $link; ?>">
                     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -40,7 +43,10 @@ get_header(); ?>
                         </div>
                     </div>
                 </a>
-            <?php endwhile; ?>
+            <?php 
+                    endif;
+                endwhile; 
+            ?>
             </div>
 
 		</main><!-- .site-main -->
