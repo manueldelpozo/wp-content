@@ -1,6 +1,15 @@
-<?php
+<?php 
+/*
+$pagename = get_query_var('pagename');
+if ( !$pagename && $id > 0 ) {
+    // If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object
+    $post = $wp_query->get_queried_object();
+    $pagename = $post->post_name;
+} */
+$pagename = get_current_page();
 
-get_header(); ?>
+get_header(); 
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -14,7 +23,7 @@ get_header(); ?>
                     $format = get_post_format( $post_id );
                     $cat = get_the_category( $post_id );
 
-                    if( $cat[0]->name == 'experts' ) :
+                    if( $cat[0]->name == $pagename ) :
             ?>
                 <a href="<?php echo $link; ?>">
                     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -38,5 +47,6 @@ get_header(); ?>
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 
+<?php get_footer(); 
 
-<?php get_footer(); ?>
+?>

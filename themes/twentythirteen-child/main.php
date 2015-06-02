@@ -1,5 +1,5 @@
-<?php
-
+<?php 
+function filter_category( $cat ) {
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -14,7 +14,7 @@ get_header(); ?>
                     $format = get_post_format( $post_id );
                     $cat = get_the_category( $post_id );
 
-                    if( $cat[0]->name == 'editorial' ) :
+                    if( $cat[0]->name == $cat ) :
             ?>
                 <a href="<?php echo $link; ?>">
                     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -38,5 +38,6 @@ get_header(); ?>
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 
-
-<?php get_footer(); ?>
+<?php get_footer(); 
+}
+?>
