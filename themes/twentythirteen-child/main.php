@@ -7,31 +7,35 @@ get_header(); ?>
             <div class="post">
             <?php
                 $args = array( 'post_type' => 'magazine' );
-                $loop = new WP_Query( $args );
+                $latest_cat_post = new WP_Query( array('posts_per_page' => 1, 'category__in' => $args;
+                if( $latest_cat_post->have_posts() ) : 
+                    while( $latest_cat_post->have_posts() ) : $latest_cat_post->the_post();
+                //$loop = new WP_Query( $args );
 
-                while ( $loop->have_posts() ) : $loop->the_post();
-                    $link = get_permalink( $id, $leavename );
-                    $format = get_post_format( $post_id );
-                    $cat = get_the_category( $post_id );
+                //while ( $loop->have_posts() ) : $loop->the_post();
+                        $link = get_permalink( $id, $leavename );
+                        $format = get_post_format( $post_id );
+                        $cat = get_the_category( $post_id );
 
-                    if( $cat[0]->name == $cat ) :
+                        if( $cat[0]->name == $cat ) :
             ?>
                 <a href="<?php echo $link; ?>">
                     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <?php 
-                        if ( has_post_thumbnail() ) 
-                            the_post_thumbnail();
+                            if ( has_post_thumbnail() ) 
+                                the_post_thumbnail();
                         ?>
                         <h3><?php the_title() ?></h3>
                         <div class="entry-content">
-                            <?php the_content(); ?>   
+                            <?php the_content(__('(more…)')); ?>   
                             <?php get_template_part( 'format', $format ); ?> 
                         </div>
                     </div>
                 </a>
             <?php 
-                    endif;
-                endwhile; 
+                        endif;
+                    endwhile; 
+                endif;
             ?>
             </div>
 
