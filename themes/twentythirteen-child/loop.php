@@ -10,15 +10,14 @@
         if( $cat[0]->name == $my_category ) :
 ?>
     <a href="<?php echo $link; ?>">
-        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;">
             <?php 
             if ( has_post_thumbnail() ) 
-                the_post_thumbnail();
+                the_post_thumbnail('large');
             ?>
-            <h3><?php the_title() ?></h3>
+            <h3><center><?php the_title() ?></center></h3>
             <div class="entry-content">
-                <?php the_content(); ?>   
-                <?php get_template_part( 'format', $format ); ?> 
+                <?php the_excerpt(); ?>
             </div>
         </div>
     </a>

@@ -2,8 +2,8 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main" style='background-color:#f7f5e7;border-top:2px solid black;padding20px;'>
+	<div id="primary" class="content-area" style='background-color:#f7f5e7;border-top:2px solid black;padding20px;'>
+		<main id="main" class="site-main" role="main" >
             <div class="post" style="">
             <?php
             $categories = get_categories(); 

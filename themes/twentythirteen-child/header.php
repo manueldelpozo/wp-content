@@ -30,24 +30,33 @@
 	<?php wp_head(); ?>
 	<style type="text/css">
 	.nav-menu li {
-	  padding-right: 3% !important; 
-	  text-transform: uppercase !important;
+		padding-right: 3% !important; 
+		text-transform: uppercase !important;
+	}
+	.search-form {
+		position: absolute !important;
+		right: 0 !important;
+		top: -34px !important;
 	}
 	</style>
 </head>
 
 <body <?php body_class(); ?>>
 	<div id="page" class="hfeed site">
-		<header id="masthead" class="site-header" role="banner">
-		
-
-			<div id="navbar" class="navbar">
+		<header id="masthead" role="banner">
+			<a href="<?php echo esc_url( home_url( '/magazine/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<img src="http://localhost:8888/wordpress/wp-content/uploads/2015/06/GPU_Logotype_RGB.png" alt="go—popup-logo" width="100px">
+				<span class="site-title" style="font-size: 31px;font-weight: lighter;color: #444;margin-left: 1px;position: absolute;top: -4px;"><?php bloginfo( 'name' ); ?></span>
+			</a>
+			
+			<div id="navbar" class="navbar" style="position:relative;">
 				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
 					<button class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></button>
 					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' => 'primary-menu', 'menu_style'=> '' ) ); ?>
-					<?php get_search_form(); ?>
+					
 				</nav><!-- #site-navigation -->
+				<?php get_search_form(); ?>
 			</div><!-- #navbar -->
 		</header><!-- #masthead -->
 
