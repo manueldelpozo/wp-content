@@ -2,9 +2,9 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area" style='background-color:#f7f5e7;border-top:2px solid black'>
 		<main id="main" class="site-main" role="main">
-            <div class="post">
+            <div class="post" style="">
             <?php
             $categories = get_categories(); 
             $do_not_duplicate = array();
@@ -14,29 +14,26 @@ get_header(); ?>
                 $loop = new WP_Query( $args );
                 if ( $loop->have_posts() ): ?>
                 <section class="<?php echo $category->name; ?> listing">
-                    <h4>Newest post in <?php echo $category->name; ?>:</h4>
+                    
                 <?php
                     while ( $loop->have_posts() ) : $loop->the_post();
                     $do_not_duplicate[] = $post->ID;
                     $link = get_permalink( $id, $leavename );
                     $format = get_post_format( $post_id );
                     $cat = get_the_category( $post_id );
-                    //$latest_cat_post = new WP_Query( array('posts_per_page' => 1, 'category__in' => $cat[0];
-                    //if( $latest_cat_post->have_posts() ) : 
-                        //while( $latest_cat_post->have_posts() ) : $latest_cat_post->the_post();
                 ?>
                     <a href="<?php echo $link; ?>">
-                        <article id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?>>
+                        <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:10px;">
+                            <p style="position:absolute;background-color:white;color:grey;text-transform:uppercase;padding:3px 10px;margin-top:20px;"><?php echo $category->name; ?></p>
                             <?php 
                             if ( has_post_thumbnail() ) 
-                                the_post_thumbnail( 'thumbnail' );
+                                the_post_thumbnail( 'large' );
                             ?>
-                            <h3><?php the_title() ?></h3>
+                            <h3><center><?php the_title() ?></center></h3>
                             <div class="entry-content">
-                                <?php the_content(); ?>   
-                                <?php get_template_part( 'format', $format ); ?> 
+                                <?php the_excerpt(); ?>
                             </div>
-                        </article>
+                        </div>
                     </a>
 
                     <?php endwhile; ?>
@@ -48,9 +45,8 @@ get_header(); ?>
             }
             ?>
             </div>
-
+            <div style="clear:both;"></div>
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 
 
-<?php get_footer(); ?>

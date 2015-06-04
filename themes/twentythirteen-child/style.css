@@ -30,3 +30,8 @@
     background: white !important;
     color: black;
 }
+
+.nav-menu li {
+  padding-right: 3% !important; 
+  text-transform: uppercase !important;
+}
