@@ -2,8 +2,8 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area" style='background-color:#f7f5e7;border-top:2px solid black'>
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main" style='background-color:#f7f5e7;border-top:2px solid black;padding20px;'>
             <div class="post" style="">
             <?php
             $categories = get_categories(); 
@@ -23,7 +23,7 @@ get_header(); ?>
                     $cat = get_the_category( $post_id );
                 ?>
                     <a href="<?php echo $link; ?>">
-                        <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:10px;">
+                        <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;">
                             <p style="position:absolute;background-color:white;color:grey;text-transform:uppercase;padding:3px 10px;margin-top:20px;"><?php echo $category->name; ?></p>
                             <?php 
                             if ( has_post_thumbnail() ) 
