@@ -15,7 +15,11 @@ function add_my_post_types_to_query( $query ) {
 
 
 function new_excerpt_more( $output ) {
-	return ' <a class="read-more" style="color:grey;text-transform:uppercase;padding-left:10px;color:#CCC;font-size:0.9em" href="'.get_permalink( get_the_ID() ).'">'.'Read More'.'</a>';
+	$link = get_permalink( get_the_ID() );
+	$pagename = get_query_var('pagename');
+	if( $pagename == "magazine" )
+		$link = "../category/".get_the_category( get_the_ID() )[0]->name;
+	return ' <a class="read-more" style="color:grey;text-transform:uppercase;padding-left:10px;color:#CCC;font-size:0.9em" href="'.$link.'">'.'Read More'.'</a>';
 }
 add_filter( 'get_the_excerpt', 'new_excerpt_more' );
 
