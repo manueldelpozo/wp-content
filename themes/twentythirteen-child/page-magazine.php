@@ -20,21 +20,40 @@ get_header(); ?>
                     $do_not_duplicate[] = $post->ID;
                     $link = get_permalink( $id, $leavename );
                     $format = get_post_format( $post_id );
-                    $cat = get_the_category( $post_id );
                 ?>
                     <a href="<?php echo $link; ?>">
                         <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;">
                             <p style="position:absolute;background-color:white;color:grey;text-transform:uppercase;padding:3px 10px;margin-top:20px;"><?php echo $category->name; ?></p>
                             <?php 
-                            if ( has_post_thumbnail() ) 
-                                the_post_thumbnail( 'large' );
+                            if ( has_post_thumbnail() ) { 
+                                $image_id = get_post_thumbnail_id(); 
+                                $image_url = wp_get_attachment_image_src($image_id,'medium'); 
+                                $image_url = $image_url[0]; 
+                                echo "<div class='image' style='background: url(".$image_url.") no-repeat center center; background-size:cover; width:100%; height:300px;'>";
+                            }
                             ?>
-                            <h3 class="title"><center><?php the_title() ?></center></h3>
+                                <div class="content" style="display:none;background-color:white;"><?php the_excerpt(); ?></div>
+                            </div>
+                            <div class="slide">
+                                
+                                <h3 class="title"><center><?php the_title() ?></center></h3>
+                            </div>
                             <div class="entry-content">
                                 <?php the_excerpt(); ?>
                             </div>
                         </div>
                     </a>
+
+                    <script type="text/javascript">
+                        jQuery(".slide").bind({ 
+                            mouseenter: function(){
+                                jQuery(this).parent().find(".content").slideDown();
+                            },
+                            mouseleave: function(){
+                                jQuery(this).parent().find(".content").slideUp();
+                            }
+                        });
+                    </script>
 
                     <?php endwhile; ?>
                 </section>

@@ -24,4 +24,5 @@ function new_excerpt_more( $output ) {
 add_filter( 'get_the_excerpt', 'new_excerpt_more' );
 
 
+
 ?>
