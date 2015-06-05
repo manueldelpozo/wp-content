@@ -25,10 +25,9 @@ get_header(); ?>
                     <a href="<?php echo $link; ?>">
                         <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;">
                             <p style="position:absolute;background-color:white;color:grey;text-transform:uppercase;padding:3px 10px;margin-top:20px;"><?php echo $category->name; ?></p>
-                            <?php 
-                            if ( has_post_thumbnail() ) 
-                                the_post_thumbnail( 'large' );
-                            ?>
+
+                            <div class='image' style="background-image=url(<?php post_image('', true, false); ?>)"></div>
+                            
                             <h3><center><?php the_title() ?></center></h3>
                             <div class="entry-content">
                                 <?php the_excerpt(); ?>
