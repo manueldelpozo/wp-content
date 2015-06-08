@@ -13,7 +13,7 @@ function add_my_post_types_to_query( $query ) {
   return $query;
 }
 
-
+/*
 function new_excerpt_more( $output ) {
 	$link = get_permalink( get_the_ID() );
 	$pagename = get_query_var('pagename');
@@ -22,7 +22,10 @@ function new_excerpt_more( $output ) {
 	return ' <a class="read-more" style="color:grey;text-transform:uppercase;padding-left:10px;color:#CCC;font-size:0.9em" href="'.$link.'">'.'Read More'.'</a>';
 }
 add_filter( 'get_the_excerpt', 'new_excerpt_more' );
+*/
 
-
-
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 ?>
