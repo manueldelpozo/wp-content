@@ -21,6 +21,14 @@ get_header(); ?>
                     $link = get_permalink( $id, $leavename );
                     $format = get_post_format( $post_id );
                     $link_readmore = "../category/".get_the_category( get_the_ID() )[0]->name;
+                    /*
+                    60 s x <?php the_modified_time(i);?>
+                    3600 x <?php the_modified_time(G);?>
+                    86400 x <?php the_modified_time(j);?>
+                    31536000 x <?php the_modified_time(Y);?>
+                    $publicationSeconds = array[]
+                    $newest = max( $publicationSeconds );
+                    */
                 ?>
                     <a href="<?php echo $link; ?>">
                         <div id="post-<?php the_ID(); ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;height:400px;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;position:relative;">
