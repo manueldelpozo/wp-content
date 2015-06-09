@@ -39,12 +39,13 @@
 		top: -34px !important;
 	}
 	</style>
+
 </head>
 
 <body <?php body_class(); ?>>
 	<div id="page" class="hfeed site">
 		<header id="masthead" role="banner">
-			<a href="<?php echo esc_url( home_url( '/magazine/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<a href="<?php echo esc_url( home_url( '/magazine/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" style="margin-left: 24px;">
 				<img src="http://localhost:8888/wordpress/wp-content/uploads/2015/06/GPU_Logotype_RGB.png" alt="go—popup-logo" width="100px">
 				<span class="site-title" style="font-size: 31px;font-weight: lighter;color: #444;margin-left: 1px;position: absolute;top: -4px;"><?php bloginfo( 'name' ); ?></span>
 			</a>

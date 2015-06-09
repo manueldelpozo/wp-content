@@ -25,7 +25,7 @@ add_filter( 'get_the_excerpt', 'new_excerpt_more' );
 */
 
 function custom_excerpt_length( $length ) {
-	return 20;
+	return 22;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 ?>
