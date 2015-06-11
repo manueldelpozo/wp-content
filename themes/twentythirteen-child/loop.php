@@ -5,7 +5,7 @@
 
     while ( $loop->have_posts() ) : $loop->the_post();
         $link = get_permalink( $id, $leavename );
-        $format = get_post_format( $post_id );
+        $mytitle = wp_trim_words( get_the_title( $post_id ), $num_words = 10, "..." );
         $cat = get_the_category( $post_id );
         if( $cat[0]->name == $my_category ) :
 ?>
@@ -21,7 +21,7 @@
             ?>
             </div>
             <div class="entry-content" style="height:70px;background-color:white;padding:15px;overflow:hidden;position:absolute;bottom:10px">  
-                <h3 class="title" style="margin-top:0;"><center><?php the_title() ?></center></h3>
+                <h3 class="title" style="margin-top:0;"><center><?php echo $mytitle; ?></center></h3>
                 <div class="content"><?php the_excerpt(); ?></div>
             </div>
             <div class="read-more" style="height:25px;background-color:white;position:absolute;left:0;bottom:0">      

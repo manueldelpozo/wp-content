@@ -39,14 +39,14 @@ get_header(); ?>
                 $myID = $postList[$dates]->ID;
                 $do_not_duplicate[] = $myID;
                 // Title
-                $mytitle = $postList[$dates]->post_title;
+                $mytitle = wp_trim_words( $postList[$dates]->post_title, $num_words = 10, "..." );
                 // Links
                 $link = get_permalink( $myID );
                 $category = get_the_category( $myID )[0]->name;
                 $link_readmore = "../category/".str_replace(' ', '', $category); 
                 // Excerpt
                 $more = "<a href='$link'> ...[more]</a>";
-                $myexcerpt = wp_trim_words( $postList[$dates]->post_content, $num_words = 32, $more );; 
+                $myexcerpt = wp_trim_words( $postList[$dates]->post_content, $num_words = 32, $more );
                 // Image
                 $image_id = get_post_thumbnail_id( $myID ); 
                 $image_url = wp_get_attachment_image_src($image_id,'large'); 
