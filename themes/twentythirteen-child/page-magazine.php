@@ -8,7 +8,6 @@ get_header(); ?>
             <?php
             $categories = get_categories(); 
             $do_not_duplicate = array();
-            $publicationDates = array();
             $postList = array();
 
             foreach ( $categories as $category ) {
@@ -16,9 +15,7 @@ get_header(); ?>
                     'post_type'     => 'magazine', 
                     'posts_per_page'=> 1, 
                     'cat'           => $category->term_id, 
-                    'post__not_in'  => $do_not_duplicate, 
-                    'orderby'       => 'date',
-                    'order'         => 'DESC' 
+                    'post__not_in'  => $do_not_duplicate
                 );
                 $loop = new WP_Query( $args );
                 if ( $loop->have_posts() ): ?>
@@ -29,34 +26,26 @@ get_header(); ?>
                         $loop->the_post();
                         $publicationDateUnix = get_the_time("U");
                         //$publicationSeconds[] = get_the_time(i) * 60 + get_the_time(G) * 3600 + get_the_time(j) * 86400 + get_the_time(Y) * 31536000;
-                        $publicationDates[] = $publicationDateUnix;
                         $postList[ $publicationDateUnix ] = $post;
                     }
                 endif;
                 // Use reset to restore original query.
                 wp_reset_postdata();
-                // Obtain newest post by the biggest unix time number
-                //$newest = array_search( max( $publicationSeconds ), $publicationSeconds);
             }
             // Order array by key DESC
             krsort($postList);
-            // Order dates DESC
-            rsort($publicationDates);
             
             // Display array of Objects
-            foreach( $publicationDates as $dates ) {
-
-     
-
+            foreach( $postList as $dates => $postItem ) {
                 $myID = $postList[$dates]->ID;
                 $mytitle = $postList[$dates]->post_title; 
-                $myexcerpt = $postList[$dates]->post_content; 
                 $do_not_duplicate[] = $myID;
                 $link = get_permalink( $myID );
+                $more = "<a href='$link'> ...[more]</a>";
+                $myexcerpt = wp_trim_words( $postList[$dates]->post_content, $num_words = 32, $more );; 
                 $format = get_post_format( $myID );
                 $category = get_the_category( $myID )[0]->name;
-                $link_readmore = "../category/".$category;
-                 
+                $link_readmore = "../category/".str_replace(' ', '', $category);    
             ?>
                     <a href="<?php echo $link; ?>">
                         <div id="post-<?php echo $myID ?>" <?php post_class( 'category-listing' ); ?> style="float:left;display:inline;width:30%;height:400px;border-bottom:5px solid grey;background-color:white;padding:0;margin:1.666%;position:relative;">
